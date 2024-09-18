@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree View for Commissions -->
+    <record id="view_oig_commission_tree" model="ir.ui.view">
+        <field name="name">oig.commission.tree</field>
+        <field name="model">oig.commission</field>
+        <field name="arch" type="xml">
+            <tree string="Commissions">
+                <field name="name"/>
+                <field name="agent_id"/>
+                <field name="customer_id"/>
+                <field name="amount"/>
+                <field name="region_id"/>
+                <field name="commission_date"/>
+                <field name="income_account_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Commissions -->
+    <record id="view_oig_commission_form" model="ir.ui.view">
+        <field name="name">oig.commission.form</field>
+        <field name="model">oig.commission</field>
+        <field name="arch" type="xml">
+            <form string="Commission">
+                <sheet>
+                    <group>
+                        <field name="name" readonly="1"/>
+                        <field name="agent_id"/>
+                        <field name="customer_id"/>
+                        <field name="contribution_id" options="{'no_create': True}" readonly="1"/>
+                        <field name="region_id" readonly="1"/>
+                        <field name="amount"/>
+                        <field name="income_account_id"/>
+                        <field name="commission_date"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View for Commissions -->
+    <record id="view_oig_commission_search" model="ir.ui.view">
+        <field name="name">oig.commission.search</field>
+        <field name="model">oig.commission</field>
+        <field name="arch" type="xml">
+            <search string="Commission Search">
+                <field name="name"/>
+                <field name="agent_id"/>
+                <field name="customer_id"/>
+                <field name="region_id"/>
+                <field name="commission_date"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Kanban View for Commissions (Optional, if required) -->
+    <record id="view_oig_commission_kanban" model="ir.ui.view">
+        <field name="name">oig.commission.kanban</field>
+        <field name="model">oig.commission</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="agent_id"/>
+                <field name="customer_id"/>
+                <field name="amount"/>
+                <field name="region_id"/>
+                <field name="commission_date"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_record">
+                            <div class="o_kanban_details">
+                                <strong>
+                                    <field name="name"/>
+                                </strong>
+                                <div>
+                                    <field name="agent_id"/>
+                                </div>
+                                <div>
+                                    <field name="customer_id"/>
+                                </div>
+                                <div>
+                                    <field name="amount"/>
+                                </div>
+                                <div>
+                                    <field name="commission_date"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Action for Commission Model -->
+    <record id="action_oig_commission" model="ir.actions.act_window">
+        <field name="name">Commissions</field>
+        <field name="res_model">oig.commission</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Commissions found!
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item for Commissions -->
+    <menuitem id="menu_oig_commission_root" name="Commissions" parent="menu_oig_root" sequence="30"/>
+    <menuitem id="menu_oig_commission" name="Manage Commissions" parent="menu_oig_commission_root" action="action_oig_commission" sequence="10"/>
+
+</odoo>

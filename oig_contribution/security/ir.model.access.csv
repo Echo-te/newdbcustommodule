@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_oig_agent_user,oig.agent.user,model_oig_agent,base.group_user,1,0,0,0
+access_oig_agent_manager,oig.agent.manager,model_oig_agent,base.group_system,1,1,1,1
+access_oig_customer_user,oig.customer.user,model_res_partner,base.group_user,1,0,0,0
+access_oig_customer_manager,oig.customer.manager,model_res_partner,base.group_system,1,1,1,1
+access_oig_service_user,oig.service.user,model_oig_service,base.group_user,1,0,0,0
+access_oig_service_manager,oig.service.manager,model_oig_service,base.group_system,1,1,1,1
+access_oig_commission_user,oig.commission.user,model_oig_commission,base.group_user,1,0,0,0
+access_oig_commission_manager,oig.commission.manager,model_oig_commission,base.group_system,1,1,1,1
+
