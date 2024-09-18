@@ -1,0 +1,19 @@
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_oig_root" name="OIG Contribution" sequence="1"/>
+
+    <!-- Submenu for Agents -->
+    <menuitem id="menu_oig_agent" name="Agents" sequence="2" parent="menu_oig_root" action="action_oig_agent"/>
+
+    <!-- Submenu for Customers -->
+    <menuitem id="menu_oig_customer" name="Customers" sequence="3" parent="menu_oig_root" action="action_oig_customer"/>
+
+    <!-- Submenu for Services -->
+    <menuitem id="menu_oig_service" name="Services" sequence="4" parent="menu_oig_root" action="action_oig_service"/>
+
+    <!-- Submenu for Commissions -->
+    <menuitem id="menu_oig_commission" name="Commissions" sequence="5" parent="menu_oig_root" action="action_oig_commission"/>
+
+    <!-- Submenu for Regions -->
+    <menuitem id="menu_oig_region" name="Regions" sequence="6" parent="menu_oig_root" action="action_oig_region"/>
+</odoo>
