@@ -1,0 +1,69 @@
+<odoo>
+    <!-- Menu Item for Services -->
+    <menuitem id="menu_oig_service" name="Services" sequence="2" parent="menu_oig_root"/>
+
+    <!-- Service List View -->
+    <record id="view_service_tree" model="ir.ui.view">
+        <field name="name">oig.service.tree</field>
+        <field name="model">oig.service</field>
+        <field name="arch" type="xml">
+            <tree string="Services">
+                <field name="customer_id"/>
+                <field name="agent_id"/>
+                <field name="agreed_amount"/>
+                <field name="total_contributions"/>
+                <field name="duration_days"/>
+                <field name="region_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Service Form View -->
+    <record id="view_service_form" model="ir.ui.view">
+        <field name="name">oig.service.form</field>
+        <field name="model">oig.service</field>
+        <field name="arch" type="xml">
+            <form string="Service Form">
+                <header>
+                    <button name="process_commissions" type="object" string="Process Commission" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="customer_id" required="1"/>
+                            <field name="agent_id"/>
+                            <field name="phone" readonly="1"/>
+                            <field name="region_id"/>
+                        </group>
+                        <group>
+                            <field name="agreed_amount"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                            <field name="duration_days" readonly="1"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="contribution_ids" widget="one2many_list" nolabel="1">
+                            <tree string="Daily Contributions">
+                                <field name="day"/>
+                                <field name="amount"/>
+                                <field name="contribution_date"/>
+                                <field name="status"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button name="process_commissions" type="object" string="Process Commission" class="oe_highlight"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to Open Service Views -->
+    <record id="action_oig_service" model="ir.actions.act_window">
+        <field name="name">Services</field>
+        <field name="res_model">oig.service</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
