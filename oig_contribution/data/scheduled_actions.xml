@@ -1,0 +1,14 @@
+<!-- data/scheduled_actions.xml -->
+<odoo>
+    <record id="ir_cron_process_commissions" model="ir.cron">
+        <field name="name">Process OIG Commissions Monthly</field>
+        <field name="model_id" ref="model_oig_commission"/>
+        <field name="state">code</field>
+        <field name="code">model.process_commissions()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">months</field> <!-- Runs at the end of each month -->
+        <field name="numbercall">-1</field> <!-- Infinite calls -->
+        <field name="doall" eval="False"/>
+        <field name="active" eval="True"/>
+    </record>
+</odoo>
