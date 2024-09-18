@@ -1,0 +1,11 @@
+<!-- data/customer_sequence.xml -->
+<odoo>
+    <record id="seq_customer_id" model="ir.sequence">
+        <field name="name">Customer ID Sequence</field>
+        <field name="code">oig.customer</field>
+        <field name="prefix">CUST</field> <!-- Prefix for customer IDs -->
+        <field name="padding">5</field>   <!-- Padding for the sequence number, e.g., CUST00001 -->
+        <field name="number_next">1</field>
+        <field name="number_increment">1</field> <!-- Increment by 1 -->
+    </record>
+</odoo>
