@@ -1,0 +1,7 @@
+<!-- data/models.xml -->
+<odoo>
+    <record id="model_oig_commission" model="ir.model">
+        <field name="name">oig.commission</field>
+        <field name="model">oig.commission</field>
+    </record>
+</odoo>
