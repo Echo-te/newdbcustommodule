@@ -1,0 +1,23 @@
+<!-- reports/report_templates.xml -->
+<odoo>
+    <report 
+        id="report_contributions"
+        string="Contribution Report"
+        model="oig.contribution"
+        report_type="qweb-pdf"
+        file="oig_contribution.report_contributions_template"
+        name="oig_contribution.report_contributions_template"/>
+    
+    <template id="report_contributions_template">
+        <t t-call="web.external_layout">
+            <t t-foreach="docs" t-as="contribution">
+                <tr>
+                    <td><span t-field="contribution.customer_id.name"/></td>
+                    <td><span t-field="contribution.amount"/></td>
+                    <td><span t-field="contribution.contribution_date"/></td>
+                    <td><span t-field="contribution.status"/></td>
+                </tr>
+            </t>
+        </t> <!-- This closing tag was missing in your XML -->
+    </template>
+</odoo>
