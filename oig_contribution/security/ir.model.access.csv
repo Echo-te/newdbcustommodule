@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_oig_customer,oig.customer,model_oig_customer,base.group_user,1,1,1,1
+access_oig_agent,oig.agent,model_oig_agent,base.group_user,1,1,1,1
+access_oig_contribution,oig.contribution,model_oig_contribution,base.group_user,1,1,1,1
