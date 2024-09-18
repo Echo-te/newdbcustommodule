@@ -1,0 +1,27 @@
+<!-- views/agent_view.xml -->
+<odoo>
+    <record id="view_agent_form" model="ir.ui.view">
+        <field name="name">oig.agent.form</field>
+        <field name="model">oig.agent</field>
+        <field name="arch" type="xml">
+            <form string="Agent">
+                <header>
+                    <!-- Add a button for manually triggering commission processing -->
+                    <button name="process_commissions_button" type="object" string="Process Commissions" class="oe_highlight"/>
+                </header>
+                <!-- Your existing fields go here -->
+            </form>
+        </field>
+    </record>
+
+    <!-- Define the tree view if needed -->
+    <record id="view_agent_tree" model="ir.ui.view">
+        <field name="name">oig.agent.tree</field>
+        <field name="model">oig.agent</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
