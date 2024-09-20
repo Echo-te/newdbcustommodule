@@ -1,0 +1,32 @@
+<odoo>
+    <!-- Region Form View -->
+    <record id="view_region_form" model="ir.ui.view">
+        <field name="name">oig.region.form</field>
+        <field name="model">oig.region</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Region Tree View -->
+    <record id="view_region_tree" model="ir.ui.view">
+        <field name="name">oig.region.tree</field>
+        <field name="model">oig.region</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Region Menu Item -->
+    <menuitem id="menu_region_root" name="Regions" sequence="10"/>
+    <menuitem id="menu_region" name="Manage Regions" parent="menu_region_root" action="action_region" sequence="10"/>
+</odoo>

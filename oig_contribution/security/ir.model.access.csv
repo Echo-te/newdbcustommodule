@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_oig_agent,oig.agent,model_oig_agent,,1,1,1,1
+access_oig_customer,oig.customer,model_oig_customer,,1,1,1,1
+access_oig_service,oig.service,model_oig_service,,1,1,1,1
+access_oig_commission,oig.commission,model_oig_commission,,1,1,1,1
+access_oig_region,oig.region,model_oig_region,,1,1,1,1
+access_oig_contribution,oig.contribution,model_oig_contribution,,1,1,1,1
+
