@@ -1,0 +1,51 @@
+<odoo>
+    <record id="view_service_form" model="ir.ui.view">
+        <field name="name">oig.service.form</field>
+        <field name="model">oig.service</field>
+        <field name="arch" type="xml">
+            <form string="OIG Service">
+                <header>
+                    <!-- Adding the button for manual commission processing -->
+                    <button name="action_process_commission" type="object" string="Process Commission Manually" class="oe_highlight" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="customer_id"/>
+                        <field name="agreed_amount"/>
+                        <!-- End date is now editable by removing readonly="1" -->
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="duration" readonly="1"/>
+                    </group>
+                    <!-- Line items (daily contributions) -->
+                    <field name="line_ids" context="{'default_service_id': id}">
+                        <tree editable="bottom">
+                            <field name="serial_number" readonly="1"/>
+                            <field name="date"/>
+                            <field name="amount"/>
+                            <field name="status"/>
+                        </tree>
+                    </field>
+                    <footer>
+                        <!-- Footer for total contributed and commission -->
+                        <label>Total Contributed: <span t-field="total_contributed"/></label>
+                        <label>Commission: <span t-field="commission_amount"/></label>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_service_tree" model="ir.ui.view">
+        <field name="name">oig.service.tree</field>
+        <field name="model">oig.service</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="customer_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="total_contributed"/>
+            </tree>
+        </field>
+    </record>
+</odoo>
