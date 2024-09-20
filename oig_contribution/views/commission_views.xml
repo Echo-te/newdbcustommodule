@@ -1,0 +1,46 @@
+<!-- views/commission_views.xml -->
+<odoo>
+    <!-- Define the action -->
+    <record id="action_oig_commission" model="ir.actions.act_window">
+        <field name="name">OIG Commissions</field>
+        <field name="res_model">oig.commission</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Define the menu -->
+    <menuitem id="menu_oig_contribution_root" name="OIG Contribution" sequence="1"/>
+    <menuitem id="menu_oig_commission" name="Commissions" parent="menu_oig_contribution_root" action="action_oig_commission" sequence="10"/>
+
+    <!-- Define the views -->
+    <record id="view_oig_commission_tree" model="ir.ui.view">
+        <field name="name">oig.commission.tree</field>
+        <field name="model">oig.commission</field>
+        <field name="arch" type="xml">
+            <tree string="OIG Commissions">
+                <field name="customer_id"/>
+                <field name="agent_id"/>
+                <field name="commission_amount"/>
+                <field name="contribution_period_start"/>
+                <field name="contribution_period_end"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_oig_commission_form" model="ir.ui.view">
+        <field name="name">oig.commission.form</field>
+        <field name="model">oig.commission</field>
+        <field name="arch" type="xml">
+            <form string="OIG Commission">
+                <sheet>
+                    <group>
+                        <field name="customer_id"/>
+                        <field name="agent_id"/>
+                        <field name="commission_amount"/>
+                        <field name="contribution_period_start"/>
+                        <field name="contribution_period_end"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
