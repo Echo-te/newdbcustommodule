@@ -1,0 +1,5 @@
+<odoo>
+    <menuitem id="menu_oig_root" name="OIG" sequence="1"/>
+
+    <menuitem id="menu_oig_agents" name="Agents" parent="menu_oig_root" sequence="2" action="action_oig_agent"/>
+</odoo>
