@@ -1,0 +1,63 @@
+<odoo>
+    <!-- OIG Customer Form View -->
+    <record id="view_oig_customer_form" model="ir.ui.view">
+        <field name="name">oig.customer.form</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <form string="OIG Customer">
+                <sheet>
+                    <group>
+                        <field name="name" string="Customer Name"/>
+                        <field name="customer_code" string="Customer ID"/>
+                        <field name="company_type"/>
+                        <field name="agent_id" string="Assigned Agent"/>
+                        <field name="region_id" string="Region"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- OIG Customer Tree View -->
+    <record id="view_oig_customer_tree" model="ir.ui.view">
+        <field name="name">oig.customer.tree</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <tree string="OIG Customers">
+                <field name="name" string="Customer Name"/>
+                <field name="customer_code" string="Customer ID"/>
+                <field name="company_type"/>
+                <field name="agent_id" string="Assigned Agent"/>
+                <field name="region_id" string="Region"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- OIG Customer Search View -->
+    <record id="view_oig_customer_search" model="ir.ui.view">
+        <field name="name">oig.customer.search</field>
+        <field name="model">res.partner</field>
+        <field name="arch" type="xml">
+            <search string="OIG Customers">
+                <field name="name" string="Customer Name"/>
+                <field name="company_type"/>
+                <field name="agent_id" string="Assigned Agent"/>
+                <field name="region_id" string="Region"/>
+                <filter string="Individuals" name="type_person" domain="[('company_type', '=', 'person')]"/>
+                <filter string="Companies" name="type_company" domain="[('company_type', '=', 'company')]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action and Menu Items -->
+    <record id="action_oig_customer" model="ir.actions.act_window">
+        <field name="name">OIG Customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('customer_rank', '>', 0)]</field>
+        <field name="context">{'default_customer_rank': 1}</field>
+    </record>
+
+    <menuitem id="menu_oig_customers" name="OIG Customers"
+              parent="your_parent_menu" action="action_oig_customer"/>
+</odoo>
