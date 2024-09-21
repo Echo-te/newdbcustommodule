@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_oig_root"
+              name="OIG Contributions"
+              sequence="1"/>
+
+</odoo>
