@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_oig_contribution_line_tree" model="ir.ui.view">
+        <field name="name">oig.contribution.line.tree</field>
+        <field name="model">oig.contribution.line</field>
+        <field name="arch" type="xml">
+            <tree string="Contributions" editable="bottom">
+                <field name="service_id"/>
+                <field name="day"/>
+                <field name="amount"/>
+                <field name="date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_oig_contribution_line_form" model="ir.ui.view">
+        <field name="name">oig.contribution.line.form</field>
+        <field name="model">oig.contribution.line</field>
+        <field name="arch" type="xml">
+            <form string="Contribution">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="service_id"/>
+                            <field name="day"/>
+                        </group>
+                        <group>
+                            <field name="amount"/>
+                            <field name="date"/>
+                            <field name="state"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_oig_contribution_line_search" model="ir.ui.view">
+        <field name="name">oig.contribution.line.search</field>
+        <field name="model">oig.contribution.line</field>
+        <field name="arch" type="xml">
+            <search string="Search Contributions">
+                <field name="service_id"/>
+                <field name="day"/>
+                <field name="date"/>
+                <filter string="Paid" name="paid" domain="[('state', '=', 'paid')]"/>
+                <filter string="Pending" name="pending" domain="[('state', '=', 'pending')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Service" name="group_by_service" domain="[]" context="{'group_by': 'service_id'}"/>
+                    <filter string="Date" name="group_by_date" domain="[]" context="{'group_by': 'date'}"/>
+                    <filter string="Status" name="group_by_state" domain="[]" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_oig_contribution_line" model="ir.actions.act_window">
+        <field name="name">Contributions</field>
+        <field name="res_model">oig.contribution.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_oig_contribution_line_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No contributions recorded yet!
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_oig_contribution_line"
+              name="Contributions"
+              parent="menu_oig_root"
+              action="action_oig_contribution_line"
+              sequence="40"/>
+</odoo>
