@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_oig_agent,access_oig_agent,model_oig_agent,base.group_user,1,1,1,1
+access_oig_service,access_oig_service,model_oig_service,base.group_user,1,1,1,1
+access_oig_contribution_line,access_oig_contribution_line,model_oig_contribution_line,base.group_user,1,1,1,1
+access_oig_commission,access_oig_commission,model_oig_commission,base.group_user,1,1,1,1
+access_oig_region,access_oig_region,model_oig_region,base.group_user,1,1,1,1
