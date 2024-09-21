@@ -1,0 +1,38 @@
+<odoo>
+    <record id="view_contribution_tree" model="ir.ui.view">
+        <field name="name">oig.contribution.tree</field>
+        <field name="model">oig.contribution</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="amount"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_contribution_form" model="ir.ui.view">
+        <field name="name">oig.contribution.form</field>
+        <field name="model">oig.contribution</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="service_id"/>
+                        <field name="date"/>
+                        <field name="amount"/>
+                        <field name="status"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_contribution" model="ir.actions.act_window">
+        <field name="name">Contributions</field>
+        <field name="res_model">oig.contribution</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_contribution" name="Contributions" parent="your_parent_menu_id" action="action_contribution"/>
+</odoo>
