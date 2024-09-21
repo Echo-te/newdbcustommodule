@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menu -->
+    <menuitem id="menu_oig_root"
+              name="OIG Contributions"
+              sequence="1"/>
+
+    <!-- Agents Menu -->
+    <menuitem id="menu_oig_agents"
+              name="Agents"
+              parent="menu_oig_root"
+              sequence="10"/>
+    <menuitem id="menu_oig_agent_list"
+              name="All Agents"
+              parent="menu_oig_agents"
+              action="action_oig_agent"
+              sequence="11"/>
+
+    <!-- Customers Menu -->
+    <menuitem id="menu_oig_customers"
+              name="Customers"
+              parent="menu_oig_root"
+              sequence="20"/>
+    <menuitem id="menu_oig_customer_list"
+              name="All Customers"
+              parent="menu_oig_customers"
+              action="action_oig_customer"
+              sequence="21"/>
+
+    <!-- Services Menu -->
+    <menuitem id="menu_oig_services"
+              name="Services"
+              parent="menu_oig_root"
+              sequence="30"/>
+    <menuitem id="menu_oig_service_list"
+              name="All Services"
+              parent="menu_oig_services"
+              action="action_oig_service"
+              sequence="31"/>
+
+    <!-- Commissions Menu -->
+    <menuitem id="menu_oig_commissions"
+              name="Commissions"
+              parent="menu_oig_root"
+              sequence="40"/>
+    <menuitem id="menu_oig_commission_list"
+              name="All Commissions"
+              parent="menu_oig_commissions"
+              action="action_oig_commission"
+              sequence="41"/>
+
+    <!-- Regions Menu -->
+    <menuitem id="menu_oig_regions"
+              name="Regions"
+              parent="menu_oig_root"
+              sequence="50"/>
+    <menuitem id="menu_oig_region_list"
+              name="All Regions"
+              parent="menu_oig_regions"
+              action="action_oig_region"
+              sequence="51"/>
+</odoo>
