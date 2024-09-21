@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree View -->
+    <record id="view_oig_agent_tree" model="ir.ui.view">
+        <field name="name">oig.agent.tree</field>
+        <field name="model">oig.agent</field>
+        <field name="arch" type="xml">
+            <tree string="Agents">
+                <field name="agent_code"/>
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="region_id"/>
+                <field name="customer_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_oig_agent_form" model="ir.ui.view">
+        <field name="name">oig.agent.form</field>
+        <field name="model">oig.agent</field>
+        <field name="arch" type="xml">
+            <form string="Agent">
+                <sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Agent Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="agent_code"/>
+                            <field name="phone"/>
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <field name="region_id"/>
+                            <field name="customer_count"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Customers">
+                            <button name="action_view_customers" type="object" string="View Customers" class="oe_stat_button" icon="fa-users"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_oig_agent_kanban" model="ir.ui.view">
+        <field name="name">oig.agent.kanban</field>
+        <field name="model">oig.agent</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="name"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <strong>
+                                    <field name="name"/>
+                                </strong>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="view_oig_agent_search" model="ir.ui.view">
+        <field name="name">oig.agent.search</field>
+        <field name="model">oig.agent</field>
+        <field name="arch" type="xml">
+            <search string="Search Agents">
+                <field name="name"/>
+                <field name="agent_code"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="region_id"/>
+                <filter string="High Performers" name="high_performers" domain="[('customer_count', '>', 10)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Region" name="group_by_region" domain="[]" context="{'group_by': 'region_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_oig_agent" model="ir.actions.act_window">
+        <field name="name">Agents</field>
+        <field name="res_model">oig.agent</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="search_view_id" ref="view_oig_agent_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first agent!
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_oig_agent"
+              name="Agents"
+              parent="menu_oig_root"
+              action="action_oig_agent"
+              sequence="10"/>
+</odoo>
