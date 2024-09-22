@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit and Extend Existing Partner Form View -->
+    <record id="view_oig_customer_form" model="ir.ui.view">
+        <field name="name">oig.customer.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='company_type']" position="after">
+                <field name="customer_code" string="Customer ID" readonly="1"/>
+                <field name="agent_id" string="Assigned Agent"/>
+                <field name="region_id" string="Region"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit and Extend Existing Partner Tree View -->
+    <record id="view_oig_customer_tree" model="ir.ui.view">
+        <field name="name">oig.customer.tree</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <field name="display_name" position="after">
+                <field name="customer_code" string="Customer ID"/>
+                <field name="agent_id" string="Assigned Agent"/>
+                <field name="region_id" string="Region"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Inherit and Extend Existing Partner Search View -->
+    <record id="view_oig_customer_search" model="ir.ui.view">
+        <field name="name">oig.customer.search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="customer_code"/>
+                <field name="agent_id"/>
+                <field name="region_id"/>
+            </xpath>
+            <filter name="type_company" position="after">
+                <separator/>
+                <filter string="Has Agent" name="has_agent" domain="[('agent_id', '!=', False)]"/>
+            </filter>
+        </field>
+    </record>
+
+    <menuitem id="menu_oig_root" name="OIG Contributions" sequence="10"/>
+
+    <!-- Define a sub-menu for customers -->
+    <menuitem id="menu_oig_customer_root" name="Customers" parent="menu_oig_root" sequence="10"/>
+
+    <!-- Action for OIG Customers -->
+    <record id="action_oig_customer" model="ir.actions.act_window">
+        <field name="name">OIG Customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="domain">[('customer_rank', '>', 0)]</field>
+        <field name="context">{'default_customer_rank': 1}</field>
+    </record>
+
+    <!-- Menu Item for Customers list -->
+    <menuitem id="menu_oig_customers_list" 
+              name="Customer List" 
+              parent="menu_oig_customer_root" 
+              action="action_oig_customer" 
+              sequence="1"/>
+</odoo>
